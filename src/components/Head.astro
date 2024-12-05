@@ -71,6 +71,8 @@ const { title, description, image = "/nano.png" } = Astro.props;
 </script>
 
 <script is:inline>
+  const THEME_CHANGE_EVENT = 'theme-change';
+
   function init() {
     preloadTheme();
     onScroll();
@@ -86,29 +88,42 @@ const { title, description, image = "/nano.png" } = Astro.props;
     lightThemeButton?.addEventListener("click", () => {
       localStorage.setItem("theme", "light");
       toggleTheme(false);
+      dispatchThemeChange("light");
     });
 
     const darkThemeButton = document.getElementById("dark-theme-button");
     darkThemeButton?.addEventListener("click", () => {
       localStorage.setItem("theme", "dark");
       toggleTheme(true);
+      dispatchThemeChange("dark");
     });
 
     const systemThemeButton = document.getElementById("system-theme-button");
     systemThemeButton?.addEventListener("click", () => {
       localStorage.setItem("theme", "system");
-      toggleTheme(window.matchMedia("(prefers-color-scheme: dark)").matches);
+      const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      toggleTheme(isDark);
+      dispatchThemeChange("system");
     });
 
     window.matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", event => {
         if (localStorage.theme === "system") {
           toggleTheme(event.matches);
+          dispatchThemeChange("system");
         }
       }
     );
 
+    // Add theme change listener
+    document.addEventListener(THEME_CHANGE_EVENT, (e) => {
+      updateThemeUI(e.detail.theme);
+    });
+
     document.addEventListener("scroll", onScroll);
+    
+    // Initial UI update
+    updateThemeUI(localStorage.theme || "system");
   }
 
   function animate() {
@@ -137,7 +152,27 @@ const { title, description, image = "/nano.png" } = Astro.props;
     });
   }
 
-function toggleTheme(dark) {
+  function dispatchThemeChange(theme) {
+    document.dispatchEvent(
+      new CustomEvent(THEME_CHANGE_EVENT, { 
+        detail: { theme } 
+      })
+    );
+  }
+
+  function updateThemeUI(theme) {
+    // Remove active class from all theme buttons
+    document.querySelectorAll('[id$="-theme-button"]')
+      .forEach(btn => btn.classList.remove('active'));
+    
+    // Add active class to current theme button
+    const activeButton = document.getElementById(`${theme}-theme-button`);
+    if (activeButton) {
+      activeButton.classList.add('active');
+    }
+  }
+
+  function toggleTheme(dark) {
     const css = document.createElement("style");
 
     css.appendChild(
@@ -161,7 +196,7 @@ function toggleTheme(dark) {
       document.documentElement.classList.remove("dark");
     }
 
-  window.getComputedStyle(css).opacity;
+    window.getComputedStyle(css).opacity;
     document.head.removeChild(css);
   }
 
