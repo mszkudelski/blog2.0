@@ -5,9 +5,10 @@ type Props = {
   href: string;
   external?: boolean;
   underline?: boolean;
+  className?: string;
 }
 
-const { href, external, underline = true, ...rest } = Astro.props;
+const { href, external, underline = true, className, ...rest } = Astro.props;
 ---
 
 <a 
@@ -19,7 +20,8 @@ const { href, external, underline = true, ...rest } = Astro.props;
     "decoration-slate-300 dark:decoration-slate-600",
     "hover:decoration-slate-400 dark:hover:decoration-slate-500",
     "transition-colors duration-300 ease-in-out",
-    underline && "underline underline-offset-2"
+    underline && "underline underline-offset-2",
+    className
   )}
   {...rest}>
   <slot/>
