@@ -12,12 +12,12 @@ import Link from "./Link.astro";
         <BackToTop />
       </div>
     </div>
-    <div class="flex justify-between items-center">
+    <div class="flex justify-between items-center flex-wrap-reverse">
       <div>
         &copy; 2024 {`|`}
         {SITE.NAME}
       </div>
-      <div class="flex flex-wrap gap-1 items-center">
+      <div class="flex flex-wrap my-2 sm:my-0 gap-1 items-center">
         <button
           id="light-theme-button"
           aria-label="Light theme"
@@ -91,17 +91,15 @@ import Link from "./Link.astro";
       </div>
     </div>
 
-    <div>
-      <p class="space-y-4 text-sm animate">
-        Built with{" "}
-        <Link
-          href="https://github.com/markhorn-dev/astro-nano"
-          aria-label="Astro Nano on Github"
-          external
-        >
-          Astro Nano on Github
-        </Link>
-      </p>
-    </div>
+    <p class="space-y-4 text-sm animate mt-2 sm:mt-0">
+      Built with{" "}
+      <Link
+        href="https://github.com/markhorn-dev/astro-nano"
+        aria-label="Astro Nano on Github"
+        external
+      >
+        Astro Nano on Github
+      </Link>
+    </p>
   </Container>
 </footer>

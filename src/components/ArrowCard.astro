@@ -2,14 +2,17 @@
 import type { CollectionEntry } from "astro:content";
 
 type Props = {
-  entry: CollectionEntry<"blog"> | CollectionEntry<"projects">;
+  entry: CollectionEntry<"blog"> | CollectionEntry<"others">;
 };
 
 const { entry } = Astro.props;
+console.log(entry);
 ---
 
 <a
-  href={`/${entry.collection}/${entry.slug}`}
+  href={"link" in entry.data
+    ? (entry.data.link as string)
+    : `/${entry.collection}/${entry.slug}`}
   class="relative group flex flex-nowrap py-3 px-4 pr-10 rounded-lg h-[72px]
           border border-slate-200 dark:border-slate-800
           hover:bg-slate-100 dark:hover:bg-slate-800/50

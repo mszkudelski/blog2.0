@@ -14,8 +14,7 @@ const blog = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_POSTS_ON_HOMEPAGE);
 
-const projects = (await getCollection("projects"))
-  .filter((project) => !project.data.draft)
+const projects = (await getCollection("others"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, SITE.NUM_PROJECTS_ON_HOMEPAGE);
 
@@ -34,8 +33,8 @@ const work = await Promise.all(
 
 <PageLayout title={HOME.TITLE} description={HOME.DESCRIPTION}>
   <Container>
-    <div class="flex flex-col md:flex-row items-center gap-8 mb-16">
-      <div class="shrink-0 w-24 md:w-[40%]">
+    <div class="flex flex-col sm:flex-row items-center gap-8 mb-16">
+      <div class="shrink-0 w-1/2 mx-auto sm:w-[40%]">
         <img
           src="/Screenshot 2024-12-06 at 09.46.03.png"
           alt="Profile picture"

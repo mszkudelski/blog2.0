@@ -24,16 +24,26 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/svg+xml" href="/favicon-dark.svg" media="(prefers-color-scheme: dark)">
-<link rel="icon" type="image/svg+xml" href="/favicon-light.svg" media="(prefers-color-scheme: light)">
-<link rel="icon" type="image/x-icon" href="/favicon-light.svg">
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon-dark.svg"
+  media="(prefers-color-scheme: dark)"
+/>
+<link
+  rel="icon"
+  type="image/svg+xml"
+  href="/favicon-light.svg"
+  media="(prefers-color-scheme: light)"
+/>
+<link rel="icon" type="image/x-icon" href="/favicon-light.svg" />
 <meta name="generator" content={Astro.generator} />
 
 <!-- Font preloads -->
-<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin/>
-<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin/>
+<link rel="preload" href={inter400} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={inter600} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={lora400} as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={lora600} as="font" type="font/woff2" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
@@ -42,6 +52,18 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <title>{title}</title>
 <meta name="title" content={title} />
 <meta name="description" content={description} />
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2S9T7KPLB"
+></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+  gtag("js", new Date());
+  gtag("config", "G-C2S9T7KPLB");
+</script>
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />
@@ -57,21 +79,21 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={new URL(image, Astro.url)} />
 
-<ViewTransitions  />
+<ViewTransitions />
 
 <script>
   import type { TransitionBeforeSwapEvent } from "astro:transitions/client";
   document.addEventListener("astro:before-swap", (e) =>
     [
       ...(e as TransitionBeforeSwapEvent).newDocument.head.querySelectorAll(
-        "link[as=\"font\"]"
+        'link[as="font"]',
       ),
-    ].forEach((link) => link.remove())
+    ].forEach((link) => link.remove()),
   );
 </script>
 
 <script is:inline>
-  const THEME_CHANGE_EVENT = 'theme-change';
+  const THEME_CHANGE_EVENT = "theme-change";
 
   function init() {
     preloadTheme();
@@ -106,14 +128,14 @@ const { title, description, image = "/nano.png" } = Astro.props;
       dispatchThemeChange("system");
     });
 
-    window.matchMedia("(prefers-color-scheme: dark)")
-      .addEventListener("change", event => {
+    window
+      .matchMedia("(prefers-color-scheme: dark)")
+      .addEventListener("change", (event) => {
         if (localStorage.theme === "system") {
           toggleTheme(event.matches);
           dispatchThemeChange("system");
         }
-      }
-    );
+      });
 
     // Add theme change listener
     document.addEventListener(THEME_CHANGE_EVENT, (e) => {
@@ -121,7 +143,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
     });
 
     document.addEventListener("scroll", onScroll);
-    
+
     // Initial UI update
     updateThemeUI(localStorage.theme || "system");
   }
@@ -148,27 +170,28 @@ const { title, description, image = "/nano.png" } = Astro.props;
     event.preventDefault();
     window.scrollTo({
       top: 0,
-      behavior: "smooth"
+      behavior: "smooth",
     });
   }
 
   function dispatchThemeChange(theme) {
     document.dispatchEvent(
-      new CustomEvent(THEME_CHANGE_EVENT, { 
-        detail: { theme } 
-      })
+      new CustomEvent(THEME_CHANGE_EVENT, {
+        detail: { theme },
+      }),
     );
   }
 
   function updateThemeUI(theme) {
     // Remove active class from all theme buttons
-    document.querySelectorAll('[id$="-theme-button"]')
-      .forEach(btn => btn.classList.remove('active'));
-    
+    document
+      .querySelectorAll('[id$="-theme-button"]')
+      .forEach((btn) => btn.classList.remove("active"));
+
     // Add active class to current theme button
     const activeButton = document.getElementById(`${theme}-theme-button`);
     if (activeButton) {
-      activeButton.classList.add('active');
+      activeButton.classList.add("active");
     }
   }
 
@@ -185,7 +208,7 @@ const { title, description, image = "/nano.png" } = Astro.props;
              transition: none !important;
           }
         `,
-      )
+      ),
     );
 
     document.head.appendChild(css);
