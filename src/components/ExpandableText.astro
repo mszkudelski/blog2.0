@@ -25,9 +25,9 @@ const componentId = `expandable-text-${generateUUID()}`;
         if (text.length > maxCharacters) {
             const updateText = () => {
                 if (isExpanded) {
-                    textEl.innerHTML = `${text} <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">Show less</span>`;
+                    textEl.innerHTML = `${text} <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">mniej</span>`;
                 } else {
-                    textEl.innerHTML = `${text.slice(0, maxCharacters)}... <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">Show more</span>`;
+                    textEl.innerHTML = `${text.slice(0, maxCharacters)}... <span class="toggle-btn text-yellow-500 hover:underline ml-1 text-sm">więcej</span>`;
                 }
             };
 
