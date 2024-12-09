@@ -2,6 +2,7 @@
 import Container from "@components/Container.astro";
 import { SITE } from "@consts";
 import BackToTop from "@components/BackToTop.astro";
+import Link from "./Link.astro";
 ---
 
 <footer class="animate">
@@ -13,7 +14,8 @@ import BackToTop from "@components/BackToTop.astro";
     </div>
     <div class="flex justify-between items-center">
       <div>
-        &copy; 2024 {`|`} {SITE.NAME}
+        &copy; 2024 {`|`}
+        {SITE.NAME}
       </div>
       <div class="flex flex-wrap gap-1 items-center">
         <button
@@ -87,6 +89,19 @@ import BackToTop from "@components/BackToTop.astro";
           </svg>
         </button>
       </div>
+    </div>
+
+    <div>
+      <p class="space-y-4 text-sm animate">
+        Built with{" "}
+        <Link
+          href="https://github.com/markhorn-dev/astro-nano"
+          aria-label="Astro Nano on Github"
+          external
+        >
+          Astro Nano on Github
+        </Link>
+      </p>
     </div>
   </Container>
 </footer>

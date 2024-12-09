@@ -44,49 +44,31 @@ const work = await Promise.all(
       </div>
       <div class="md:w-[60%]">
         <h4 class="animate font-semibold text-black dark:text-white">
-          Hi, I'm Nano <span class="text-xl">👋🏻</span>
+          Hej <span class="text-xl">👋🏻</span>
         </h4>
         <article class="space-y-4">
-          <p class="animate">TODO:</p>
           <p class="animate">
-            TODO: move to the bottom as ad for author Visit
-            <Link
-              href="https://github.com/markhorn-dev/astro-nano"
-              aria-label="Astro Nano on Github"
-              external
-            >
-              Astro Nano on Github
-            </Link>
-            to fork the repository, read the docs or one-click deploy on Vercel or
-            Netlify.
+            Jestem programistą z wieloletnim doświadczeniem w tworzeniu i
+            rozwijaniu mały oraz dużych aplikacji webowych.
+          </p>
+          <p class="animate">
+            Znajdziesz tutaj mojego <Link href="/blog" variant="primary"
+              >bloga</Link
+            > oraz informacje o moim <Link href="/work" variant="primary"
+              >doświadczeniu</Link
+            > zawodowym.
           </p>
         </article>
       </div>
     </div>
 
     <div class="space-y-16">
-      <section>
-        <article class="space-y-4">
-          <p class="animate">TODO:</p>
-          <p class="animate">
-            TODO: move to the bottom as ad for author Visit
-            <Link
-              href="https://github.com/markhorn-dev/astro-nano"
-              aria-label="Astro Nano on Github"
-              external
-            >
-              Astro Nano on Github
-            </Link>
-            to fork the repository, read the docs or one-click deploy on Vercel or
-            Netlify.
-          </p>
-        </article>
-      </section>
-
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
-          <h5 class="font-semibold text-black dark:text-white">Latest posts</h5>
-          <Link href="/blog"> See all posts </Link>
+          <h5 class="font-semibold text-black dark:text-white">
+            Najnowsze wpisy
+          </h5>
+          <Link href="/blog"> Zobacz wszystkie</Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
@@ -102,9 +84,9 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Work Experience
+            Doświadczenie
           </h5>
-          <Link href="/work"> See all work </Link>
+          <Link href="/work"> Zobacz wszystkie </Link>
         </div>
         <ul class="flex flex-col space-y-4">
           {
@@ -113,13 +95,13 @@ const work = await Promise.all(
                 <div class="text-sm opacity-75">
                   {dateRange(entry.data.dateStart, entry.data.dateEnd)}
                 </div>
-                <div class="font-semibold text-black dark:text-white">
+                <div class="font-semibold text-black dark:text-white text-lg">
                   {entry.data.company}
                 </div>
                 <div class="text-sm opacity-75">{entry.data.role}</div>
                 {index === 0 && (
                   <article>
-                    <ExpandableText text={entry.body} />
+                    <entry.Content />
                   </article>
                 )}
               </li>
@@ -131,9 +113,9 @@ const work = await Promise.all(
       <section class="animate space-y-6">
         <div class="flex flex-wrap gap-y-2 items-center justify-between">
           <h5 class="font-semibold text-black dark:text-white">
-            Recent projects
+            Inne materiały
           </h5>
-          <Link href="/projects"> See all projects </Link>
+          <Link href="/projects"> Zobacz wszystkie </Link>
         </div>
         <ul class="flex flex-col gap-4">
           {
@@ -148,12 +130,12 @@ const work = await Promise.all(
 
       <section class="animate space-y-4">
         <h5 class="font-semibold text-black dark:text-white">
-          TODO: write in polish Let's Connect
+          Zostańmy w kontakcie!
         </h5>
         <article>
           <p>
-            If you want to get in touch with me about something or just to say
-            hi, reach out on social media or send me an email.
+            Jeśli chcesz się ze mną skontaktować, to znajdź mnie na social
+            mediach, albo napisz email.
           </p>
         </article>
         <ul class="flex flex-wrap gap-2">
