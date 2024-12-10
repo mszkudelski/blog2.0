@@ -19,6 +19,9 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = "/nano.png" } = Astro.props;
+
+// Add this line to get the Google Tag ID from an environment variable
+const googleTagId = import.meta.env.GOOGLE_TAG_ID;
 ---
 
 <!-- Global Metadata -->
@@ -53,17 +56,18 @@ const { title, description, image = "/nano.png" } = Astro.props;
 <meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-C2S9T7KPLB"
-></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag() {
-    dataLayer.push(arguments);
-  }
-  gtag("js", new Date());
-  gtag("config", "G-C2S9T7KPLB");
-</script>
+<!-- Conditionally include Google Tag code if GOOGLE_TAG_ID is set -->
+{googleTagId && (
+  <>
+    <script async src={`https://www.googletagmanager.com/gtag/js?id=${googleTagId}`}></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {{ dataLayer.push(arguments); }}
+      gtag('js', new Date());
+      gtag('config', '{googleTagId}');
+    </script>
+  </>
+)}
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website" />

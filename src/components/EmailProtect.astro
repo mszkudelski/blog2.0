@@ -14,7 +14,7 @@ const protectedEmail = `${username.slice(0, 3)}...@${domain}`;
 
 <span id={componentId} class="cursor-pointer">
     <span class="protected">{protectedEmail}</span>
-    <span class="actual hidden">{email}</span>
+    <a href={"mailto:" + email} class="actual hidden">{email}</a>
 </span>
 
 <script define:vars={{ componentId }}>
@@ -25,7 +25,7 @@ const protectedEmail = `${username.slice(0, 3)}...@${domain}`;
         let isRevealed = false;
 
         container.addEventListener("click", () => {
-            isRevealed = !isRevealed;
+            isRevealed = true;
             protectedElement.classList.toggle("hidden");
             actual.classList.toggle("hidden");
         });
