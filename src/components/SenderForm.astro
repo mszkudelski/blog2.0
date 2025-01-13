@@ -1,5 +1,6 @@
 ---
-import Link from "@components/Link.astro";
+import { Link } from "@components/Link";
+import { getCookie, setCookie } from "../utils/cookies";
 
 const senderApiKey = import.meta.env.PUBLIC_SENDER_API_KEY;
 const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
@@ -73,7 +74,7 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
     }
 </style>
 
-<script define:vars={{ groupId, senderApiKey }}>
+<script>
     document.addEventListener("DOMContentLoaded", () => {
         let isSubscribing = false;
         const form = document.getElementById("senderForm");
@@ -83,6 +84,10 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
         if (!form || !spinner || !messageDiv) {
             console.error("Required elements not found");
             return;
+        }
+
+        if (getCookie("senderSubscribed")) {
+            document.getElementById("senderForm")?.classList.add("hidden");
         }
 
         const validateEmail = (email) => {
@@ -109,6 +114,7 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
 
         form.addEventListener("submit", async (e) => {
             e.preventDefault();
+            e.stopPropagation();
             if (!e.isTrusted) return;
 
             if (isSubscribing) return;
@@ -153,7 +159,9 @@ const groupId = import.meta.env.PUBLIC_SENDER_GROUP_ID;
                 }
 
                 showMessage("Dzięki za zapisanie się do newslettera!");
+                setCookie("senderSubscribed", "true", 30);
                 form.reset();
+                document.getElementById("senderForm")?.classList.add("hidden");
             } catch (error) {
                 showMessage(
                     error.message === "Extension context invalidated"
