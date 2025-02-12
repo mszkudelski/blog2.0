@@ -60,13 +60,14 @@ const components = { Highlight, Link };
 
     <SenderFormWrapper client:load />
     <div
-      id="senderForm"
+      id="senderFormOverlay"
       class="fixed w-full h-full flex items-center justify-center bottom-0 right-0 z-10 opacity-0 pointer-events-none transition-opacity duration-300 bg-black/50"
     >
       <div
         class="bg-slate-50 dark:bg-slate-950 p-6 rounded-lg w-full max-w-md mx-4 relative"
       >
         <button
+          id="senderFormClose"
           type="button"
           aria-label="Close form"
           class="absolute top-4 right-4 text-slate-600 dark:text-slate-300 hover:text-gray-700 dark:hover:text-gray-300 text-4xl leading-none"
@@ -85,18 +86,19 @@ const components = { Highlight, Link };
 
     if (!senderSubscribed) {
       const MODAL_CLOSED_KEY = "senderFormClosed";
+      const HIDDEN_CLASSES = ["opacity-0", "pointer-events-none"];
 
       const closeModal = () => {
-        const formEl = document.getElementById("senderForm");
-        if (!formEl) return;
+        const overlay = document.getElementById("senderFormOverlay");
+        if (!overlay) return;
 
-        formEl.classList.add("opacity-0", "pointer-events-none");
+        overlay.classList.add(...HIDDEN_CLASSES);
         setCookie(MODAL_CLOSED_KEY, "true", 7);
       };
 
       const handleScroll = () => {
-        const formEl = document.getElementById("senderForm");
-        if (!formEl) return;
+        const overlay = document.getElementById("senderFormOverlay");
+        if (!overlay) return;
 
         if (getCookie(MODAL_CLOSED_KEY) === "true") return;
 
@@ -109,18 +111,17 @@ const components = { Highlight, Link };
           100;
 
         if (scrolled >= 50) {
-          formEl.classList.remove("opacity-0", "pointer-events-none");
+          overlay.classList.remove(...HIDDEN_CLASSES);
         }
       };
 
-      const closeButton = document.querySelector(
-        '#senderForm button[aria-label="Close form"]',
-      );
+      const closeButton = document.getElementById("senderFormClose");
       if (closeButton) {
         closeButton.addEventListener("click", closeModal);
       }
 
       window.addEventListener("scroll", handleScroll);
+      handleScroll();
     }
   </script>
 </PageLayout>
