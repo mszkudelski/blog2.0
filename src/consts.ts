@@ -9,22 +9,22 @@ export const SITE: Site = {
 };
 
 export const HOME: Metadata = {
-  TITLE: "Programuję i Dzielę się Wiedzą – Portfolio i Blog",
+  TITLE: "Portfolio i Blog",
   DESCRIPTION: "Portfolio programisty z doświadczeniem w frontendzie. CV, projekty oraz blog o technologiach i pracy w IT – techniczne artykuły i porady dla programistów.",
 };
 
 export const BLOG: Metadata = {
-  TITLE: "Blog – Techniczne i Miękkie Artykuły o IT",
+  TITLE: "Blog",
   DESCRIPTION: "Blog poświęcony technologiom, programowaniu i pracy w branży IT. Zawiera artykuły techniczne oraz treści dotyczące rozwoju i umiejętności miękkich w IT.",
 };
 
 export const WORK: Metadata = {
-  TITLE: "Moje doświadczenie i CV",
+  TITLE: "Doświadczenie i CV",
   DESCRIPTION: "Moje doświadczenie zawodowe w IT. Poznaj projekty, nad którymi pracowałem, moje umiejętności techniczne oraz pełne CV.",
 };
 
 export const PROJECTS: Metadata = {
-  TITLE: "Inne Materiały – Podcasty i Artykuły",
+  TITLE: "Inne Materiały",
   DESCRIPTION: "Moje wystąpienia w podcastach, artykuły gościnne i inne materiały, w których dzielę się wiedzą i doświadczeniem z zakresu IT.",
 };
 
