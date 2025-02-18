@@ -20,13 +20,13 @@ description: 'W branży IT dzielenie się wiedzą wygląda zupełnie inaczej ni�
 
 Myślę, że w naszej branży dzielenie się wiedzą wygląda zupełnie inaczej niż w wielu innych. Zazwyczaj pracujemy w zespołach, a to oznacza, że musimy często mieć do czynienia z kodem kolegi/koleżanki. Oznacza to też, że za wyniki jesteśmy rozliczani jako zespoły, więc chcemy, że inni dowozili swoje zadania przynajmniej tak szybko jak my (nie schodząc z jakości kodu) Chcemy wyrównywać poziom (oczywiście w górę ;) ) innych członków zespołu.
 
-Właśnie dlatego mamy, bardzo często naturalną, potrzebę dzielenia się wiedzą, nowinkami i ciekawostkami technicznymi. Są różne sposoby, żeby to realizować. Bazując na własny doświadczeniu, chciałby przedstawić kilka sposób, które u mnie się sprawdziły. 
+Właśnie dlatego mamy, bardzo często naturalną, potrzebę dzielenia się wiedzą, nowinkami i ciekawostkami technicznymi. Są różne sposoby, żeby to realizować. Bazując na własny doświadczeniu, chciałby przedstawić kilka sposób, które u mnie się sprawdziły.
 
 ## Code Review
 
 Wbrew pozorom najlepszym według mnie sposobem na dzielenie się wiedzą to proces Code Review. Oczywiście liczy się tutaj, jak przeglądamy kod oraz jakiego typu komentarze zostawiamy. Jako Reviewer możemy czegoś nauczyć osobę wystawiającą Pull Request'a, albo samemu się czegoś nowego dowiedzieć.
 
-W pierwszym przypadku razem z naszymi uwagami do kodu powinniśmy postarać się przedstawiać alternatywne rozwiązanie. W zależności od sytuacji może się przydać argumentacja naszego podejścia. Można też dołączyć jakieś przydatne linki do dokumentacji lub blogpostów opisujących dany temat. Wszystko zależy od naszych intencji. 
+W pierwszym przypadku razem z naszymi uwagami do kodu powinniśmy postarać się przedstawiać alternatywne rozwiązanie. W zależności od sytuacji może się przydać argumentacja naszego podejścia. Można też dołączyć jakieś przydatne linki do dokumentacji lub blogpostów opisujących dany temat. Wszystko zależy od naszych intencji.
 
 Jeśli chcemy, żeby tylko jakość kodu była wyższa, to będziemy dawać komentarze w stylu "zrób tak", albo "nie rób tak". Dość prawdopodobne, że spotkamy się z podobnymi problemami w kolejnych PRach. Jeśli jednak przekażemy większą świadomość razem z naszym komentarzem, to możemy się spodziewać lepszych umiejętności naszego kolegi i zarazem lepszej jakości kodu w przyszłości.
 
@@ -38,7 +38,7 @@ Proces Code Review to dość rozległy i pewnie w niektórych aspektach kontrowe
 
 > Więcej o code review możecie przeczytać w artykule Radka Wojtysiaka
 >
-> https://www.linkedin.com/pulse/kompendium-code-review-jak-efektywnie-wykonywa%C4%87-kodu-wojtysiak-1c/
+> <https://kariera-dev.blog/kompedium-code-review/>
 
 ## Pair programming
 
@@ -60,6 +60,6 @@ Jestem zdania, że każda osoba w zespole powinna mieć prawo głosu, niezależn
 
 Takie spotkania to idealna przestrzeń, żeby każdy mógł się wypowiedzieć.
 
-> Tip: 
+> Tip:
 >
 > Warto zapisywać tematy z wyprzedzeniem - wtedy kiedy przychodzą nam do głowy, bo często uciekają. Można też prowadzić współdzieloną listę
