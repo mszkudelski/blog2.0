@@ -1,0 +1,122 @@
+---
+title: "Code Review jako narzędzie do dzielenia się wiedzą"
+date: "2025-04-07"
+categories: 
+  - "self-develop"
+tags: 
+  - "rozwój"
+  - "programowanie"
+  - "code review"
+  - "dzielenie się wiedzą"
+author:
+   name: Marek Szkudelski
+   picture: '/assets/blog/authors/face.png'
+ogImage:
+ url: ''
+level: ""
+published: 'true'
+description: "Każdy programista w dzisiejszych czasach styka się na co dzień z procesem Code Review. Często, żeby cokolwiek wdrożyć na produkcję, musimy dostać akceptację kodu od innej osoby z zespołu. Jest to tak powszechne, że przyjmujemy to za coś oczywistego i rzadko zastanawiamy się nad tym, dlaczego ten proces istnieje. A tymczasem Code Review jest bardzo istotne na kilku poziomach."
+---
+
+Każdy programista w dzisiejszych czasach styka się na co dzień z procesem **Code Review**. Często, żeby cokolwiek wdrożyć na produkcję, musimy dostać **akceptację kodu od innej osoby z zespołu**. Jest to tak powszechne, że przyjmujemy to za coś oczywistego i rzadko zastanawiamy się nad tym, dlaczego ten proces istnieje. A tymczasem Code Review jest **bardzo istotne na kilku poziomach**.
+
+## Dlaczego Code Review jest ważne
+
+Po pierwsze, dbamy o **dobrą jakość kodu**. Nie chodzi tutaj o wcięcia albo średnik na końcu linijki. To już dawno jest załatwiane automatycznie poprzez lintery i prettiery. Chodzi o sprawdzenie, czy **dobrze zostały zastosowane praktyki programistyczne**. Czy zmienne i funkcje są dobrze nazwane, czy wzorce projektowe zostały prawidłowo zastosowane, czy nie ma zbędnych powtórzeń kodu (albo czy nie są błędnie zredukowane), czy nie ma błędów logicznych.
+
+Po drugie, podczas tego procesu przyglądamy się, czy nie doszło tutaj do **pomyłek biznesowych**. Warto sprawdzić, czy zmiany odpowiadają wymaganiom biznesowym. Tutaj **bardzo ważny jest kontekst**. Warto przejrzeć zadanie połączone z Pull Requestem i zrozumieć jego cel.
+
+Po trzecie, i najmniej oczywiste, Code Review to **świetne i najbardziej naturalne narzędzie do dzielenia się wiedzą w zespole**. Poprzez przeglądanie kodu innych programistów oraz dyskusje pod konkretnymi fragmentami możemy się wiele nauczyć z technologii oraz tego, jak myślą inni. Najlepsze jest to, że dzieje się to na co dzień i w trakcie procesu Code Review. Nie musimy czekać na kolejne spotkanie z wymianą wiedzy, żeby czegoś się nauczyć.
+
+<Highlight type="info">
+Code Review to **świetne i najbardziej naturalne narzędzie do dzielenia się wiedzą w zespole**
+</Highlight>
+
+## Jak przeglądać kod podczas Code Review
+
+Według mnie (i wbrew wszelkim pozorom), **najlepszym sposobem na dzielenie się wiedzą** jest właśnie proces Code Review. Oczywiście liczy się tutaj, jak przeglądamy kod oraz jakie komentarze zostawiamy. Jako Reviewer możemy czegoś nauczyć osobę wystawiającą Pull Request (PR), albo samemu się czegoś nowego dowiedzieć.
+
+Po pierwsze, razem z naszymi uwagami do kodu powinniśmy postarać się **przedstawiać alternatywne rozwiązanie**. W zależności od sytuacji może się przydać argumentacja naszego podejścia. Można też dołączyć przydatne linki do dokumentacji lub blogpostów opisujących dany temat. Wszystko zależy od naszych intencji. Jeśli to jest jedno lub kilkulinijkowa zmiana, to warto taką zmianę napisać. Niektóre narzędzia, takie jak GitHub, pozwalają na edytowanie kodu bezpośrednio w przeglądarce. Wtedy możemy od razu pokazać nasze rozwiązanie, a druga osoba może jednym kliknięciem zaakceptować naszą zmianę.
+
+Jeśli chcemy, żeby tylko jakość kodu była wyższa, a jednocześnie będziemy dawać komentarze w stylu "zrób tak" albo "nie rób tak", bez dodatkowego wyjaśnienia, to dość prawdopodobne, że spotkamy się z podobnymi problemami w kolejnych PRach. Jeśli jednak **przekażemy większą świadomość** razem z naszym komentarzem, to możemy się spodziewać lepszych umiejętności naszego kolegi i zarazem lepszej jakości kodu w przyszłości. Jeśli piszesz, że zastosowałbyś inne podejście, to **uargumentuj to**. Przedstaw swoją perspektywę, swój sposób myślenia.
+
+<Highlight type="tip">
+Zawsze staraj się przedstawiać alternatywne rozwiązanie. Oraz argumentację swojego podejścia.
+</Highlight>
+
+Po drugie, może być sytuacja, kiedy my nie do końca wiemy, dlaczego osoba wystawiająca PR w taki sposób coś zapisała albo w ogóle nie znamy tego elementu danego języka, biblioteki lub technologii. Wtedy najlepiej poczytać o tym na przykład w dokumentacji. Jeśli fragment kodu jest bardziej złożony, albo nasza wątpliwość dotyczy bardziej powodu podjęcia jakiejś decyzji, to **najlepiej zadać pytanie**. Dzięki temu również Ty jako Reviewer możesz się czegoś nauczyć.
+
+<Highlight type="tip">
+Komentarze od PRów to nie muszą być tylko uwagi do kodu.
+</Highlight>
+
+Po trzecie, postaraj się **uchwycić Big Picture** rozwiązania kolegi/koleżanki z zespołu. Jeśli PR ma opis, to go przeczytaj. Jeśli nie ma, to zapytaj o to. Zrozumienie kontekstu zmian pozwoli Ci lepiej ocenić ich jakość. Nie bój się zadawać pytań, nawet jeśli wydają się oczywiste. Często PRy są połączone z konkretnym zadaniem, które można znaleźć w systemie zarządzania projektami (np. Jira). Przejdź do tego systemu, przeczytaj opis zadania i postaraj się zrozumieć biznesową perspektywę tych zmian. Dzięki temu będziesz mógł lepiej oceniać nie tylko pojedyncze linijki kodu, ale również całość rozwiązania.
+
+Warto też dodać, że całkiem możliwe, że nie tylko Ty jako Reviewer oraz osoba wystawiająca PR się czegoś dowiecie. **Nauczyć się czegoś nowego może każda osoba**, która wejdzie w dany PR i poczyta komentarze. Dlatego pisz komentarze, które będą zrozumiałe dla innych i unikaj przechodzenia na kanał prywatnych wiadomości.
+
+Natomiast kiedy dyskusja się ciągnie i ewidentnie się nie rozumiecie, to warto to sobie **wyjaśnić przez prywatne wiadomości lub zorganizować szybkiego call'a**. Warto później napisać w komentarzu pod PRem podsumowanie ustaleń z waszej rozmowy.
+
+### Druga runda Code Review z perspektywy reviewera
+
+Jeśli autor kodu naniesie poprawki do kodu lub odpowie na komentarze, to warto **wrócić do PRa i sprawdzić najnowsze zmiany** oraz jego odpowiedzi. Czasami nawet jeśli programista zgadza się z nami i poprawia kod, to może się okazać, że nie zrozumieliście się. Jeśli spojrzysz na te poprawki, to bardzo szybko to wyłapiesz.
+
+Jeśli autor PRa nie zgadza się z Tobą i argumentuje swoje stanowisko, to powinieneś je wziąć pod uwagę. Może miałeś za małą wiedzę o kontekście biznesowym, albo może zabrakło Ci wiedzy na temat jakiegoś narzędzia? Zastanów się też wtedy, **czy "to jest wzgórze, na którym chcesz umrzeć"**. Innymi słowy, czy Twój komentarz dotyczył jakiejś krytycznej zmiany, czy może chodziło o jakąś lekką sugestię. Nie warto tracić czasu na dyskutowanie nad mało znaczącymi aspektami kodu.
+
+Podsumowując tę część, warto pamiętać, żeby poprzez komentarze w PRach starać się **edukować siebie, autora kodu i również pozostałych członków zespołu**. 
+
+<Highlight type="tip">
+Nie bój się zadawać nawet oczywistych pytań. W procesie Code Review jest to szczególnie ważne.
+</Highlight>
+
+## Jak wystawić Pull Request, żeby sprawnie przeszedł proces Code Review
+
+Nikt z programistów ani biznesu nie lubi, jeśli PR utknie w procesie Code Review. Jeśli chcesz, żeby Twój PR został szybko i sprawnie zaakceptowany przez zespół, warto zadbać o kilka ważnych szczegółów.
+
+Po pierwsze, **dobry opis PRa to podstawa**. Pamiętaj, że reviewer nie zawsze ma kontekst Twojej pracy, więc dostarczenie go może ułatwić zrozumienie treści PRa. Najlepiej jeśli PR będzie połączony z konkretnym zadaniem np. poprzez Jira ticket ID.
+
+W opisie PRa **wylistuj najważniejsze zmiany** związane z zadaniem biznesowym, ale nie zapomnij dodać do listy również niepowiązanych zmian. Dobry programista zawsze stara się zostawiać kod lepszym niż go zastał, ale przeglądającemu kod mogą te usprawnienia umknąć.
+
+Po drugie, przed wystawieniem PRa do code review, **przeglądnij swój kod jeszcze raz**. Może się okazać, że zwrócenie uwagi na parę szczegółów zaoszczędzi czas innym osobom. Pamiętaj, że ładny kod jest łatwiejszy do przeglądania niż ten, w którym trzeba zwracać uwagę co kilka linijek. Nawet jeśli nie masz teraz czasu na wprowadzenie poprawek, a potrzebujesz już feedbacku od innych, to dodaj sam sobie komentarze na później.
+
+<Highlight type="tip">
+Zawsze przejrzyj swój kod jeszcze raz przed wystawieniem PRa do code review.
+</Highlight>
+
+**Dziel duże zadania na mniejsze pull requesty**. Łatwiej przeglądać i uwzględnić szczegóły, kiedy nie trzeba przeglądać kilku tysięcy linii kodu na raz. Możesz np. najpierw wysłać do CR happy path feature'a, a potem dodać edge case'y w osobnym PR. Ilość komentarzy do kodu wcale nie musi wzrastać wraz z ilością linii kodu. Przy PRach z kilkoma tysiącami linii kodu nie jesteśmy w stanie zbadać go tak dokładnie jak przy kilku dziesiątkach linijek.
+
+Tutaj tak naprawdę warto o tym pomyśleć dużo wcześniej. Już na etapie planowania pracy możemy zastanowić się, jak podzielić zadanie, żebyśmy mogli **dostarczać wartość biznesową szybciej**. Duże PRy będą spowalniały proces dostarczania oprogramowania. Duże rzeczy często blokują nas przed działaniem. Trudniej jest zabrać się za Code Review dużego PRa i później trudno jest zabrać się za poprawki, jeśli jest ich dużo albo dotyczą dużej partii kodu.
+
+
+<Highlight type="tip">
+Jeśli zależy Tobie na szybkim przejściu przez Code Review, to zadbaj o dobry opis PRa oraz podziel duże zadania na mniejsze pull requesty.
+</Highlight>
+
+### Druga runda Code Review z perspektywy autora PRa
+
+Odpowiadanie na komentarze w Pull Requestach jest ważnym elementem procesu Code Review.
+
+Jeśli otrzymasz uwagę od innego programisty, warto ją uwzględnić, nawet jeśli nie zgadzasz się z nią. Możesz **uargumentować swoje stanowisko** i wytłumaczyć, dlaczego uważasz, że nie jest ona konieczna. To pozwoli innym zrozumieć Twoje decyzje i może pomóc rozwiązać ewentualne nieporozumienia. Pamiętaj jednak o **wzajemnym szacunku**. Nie oceniaj danej osoby poprzez komentarz, który zostawiła. Staraj się nie obrażać, tylko konstruktywnie podchodzić do komentarza, krytycznie do kodu i z szacunkiem do drugiej osoby.
+
+<Highlight type="tip">
+Komentarz do PRa to nie jest atak na Twoją osobę. Chodzi lepszą jakość kodu.
+</Highlight>
+
+Zastanów się też wtedy, czy "to jest wzgórze, na którym chcesz umrzeć", jak pisałem już w sekcji o perspektywie reviewera. Czasami **prościej będzie wprowadzić małą zmianę**, niż wymieniać kilka komentarzy w dyskusji o tej zmianie.
+
+Jeśli natomiast uważasz, że komentarz jest wartościowy i pomocny, warto podziękować za niego i uwzględnić go w swoim kodzie.
+
+## Moja perspektywa
+
+Ja kiedyś bardzo personalnie podchodziłem do tego procesu. Kiedy dostawałem dużo komentarzy do PRa, to unosiłem się dumą i starałem się obalić jak najwięcej twierdzeń reviewera. Dzisiaj kiedy dostaję dużo komentarzy, to **jestem wdzięczny**, bo podnosi to jakość kodu, a ja mogę się dużo nauczyć.
+
+Kiedyś uważałem, że wystawiający PR i reviewer to dwie strony barykady. Myślałem, że musimy walczyć, żeby udowodnić, kto ma rację, bo ten, kto ją ma, jest lepszym programistą. Dzisiaj jestem bardziej świadomy tego, że **proces Code Review to współpraca zespołowa**. Oboje jesteśmy po tej samej stronie, bo nasze cele są takie same - dostarczanie wartości biznesowej poprzez wysokiej jakości kod.
+
+Dodatkowo po paru latach w branży uświadomiłem sobie, że Code Review to **świetna okazja do dzielenia się wiedzą** i wszyscy mogą na tym zyskać.
+
+<Highlight type="tip">
+Code Review to współpraca zespołowa, a nie przepychanka pomiędzy dwiema dumnymi programistami.
+</Highlight>
+
+## Podsumowanie
+
+Proces Code Review to temat dość rozległy i pewnie w niektórych aspektach kontrowersyjny. Dość ważne jest, żeby zaznaczyć, że **uzupełnianie wiedzy w zespole** jest przydatnym dodatkiem do tego procesu, ale głównym jego zadaniem jest **podnoszenie jakości kodu oraz oprogramowania**.
