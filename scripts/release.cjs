@@ -40,17 +40,24 @@ async function getNextVersion(prNumber) {
         throw new Error('No PR number provided');
     }
 
+    core.info(`Starting process of versioning for PR nr: ${prNumber}`);
+
     try {
         const { stdout } = await execPromise(`gh pr view ${prNumber} --json labels`);
         const prLabels = JSON.parse(stdout).labels;
 
+        core.info(`PR labels: ${prLabels.map(label => label.name).join(', ')}`);
+
         const currentVersion = await getCurrentVersionFromGitTag();
+        core.info(`Current version: ${currentVersion}`);
 
 
         let version = '';
 
         if (currentVersion) {
             const versionLabel = determineVersionLabel(prLabels) || 'patch';
+            core.info(`Determined version label: ${versionLabel}`);
+
 
             version = getNewReleaseVersion(currentVersion, versionLabel);
         } else {
@@ -58,6 +65,7 @@ async function getNextVersion(prNumber) {
         }
 
         await execPromise(`gh release create ${version} -t ${version} --generate-notes`);
+        core.info('Github Release created with version: ' + version);
 
         return version;
     } catch (error) {

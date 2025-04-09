@@ -2,12 +2,15 @@ name: Create release
 
 on:
   pull_request:
-    types: [ closed ]
+    types: [closed]
+    branches:
+      - main
 
 jobs:
   create_release:
-    # if: github.event.pull_request.base.ref == github.event.repository.default_branch && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+    # if: github.event.pull_request.merged == true
     permissions:
+      contents: write
       pull-requests: write
       repository-projects: write
     steps:
@@ -16,8 +19,13 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install @actions/core dependency
-        run: npm --prefix $GITHUB_ACTION_PATH/../ install --no-save @actions/core
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: latest
+
+      - name: Install dependencies
+        run: pnpm add @actions/core
         shell: bash
 
       - name: Create a release
