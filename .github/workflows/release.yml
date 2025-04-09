@@ -1,0 +1,31 @@
+name: Create release
+
+on:
+  pull_request:
+    types: [ closed ]
+
+jobs:
+  create_release:
+    # if: github.event.pull_request.base.ref == github.event.repository.default_branch && github.event_name == 'pull_request' && github.event.pull_request.merged == true
+    permissions:
+      pull-requests: write
+      repository-projects: write
+    steps:
+      - name: Checkout on source branch
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install @actions/core dependency
+        run: npm --prefix $GITHUB_ACTION_PATH/../ install --no-save @actions/core
+        shell: bash
+
+      - name: Create a release
+        id: create-release
+        run: node scripts/release.cjs ${{ github.event.pull_request.number }}
+        shell: bash
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_REPO: ${{ github.repository }}
+    runs-on:
+      - ubuntu-latest
